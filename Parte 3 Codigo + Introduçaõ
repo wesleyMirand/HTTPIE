@@ -1,0 +1,17 @@
+Parte 3:
+
+Requisições e respostas do método GET.
+Examinar códigos de retorno comuns do GET.
+Cabeçalho da requisição com PUT e parâmetro print=HB.
+Classe de redirecionamento (3xx):
+Códigos 300: indicam redirecionamento, onde o desenvolvedor deve solicitar o local para onde o redirecionamento deve ser encaminhado.
+Exemplo: http https://wikipedia.org/ --print=h (código de retorno 301 indica redirecionamento permanente).
+Códigos de status:
+301: indica que o endereço mudou de forma permanente.
+302: temporário de mudança.
+Exemplo: http http://mail.google.com/mail --print=Hh (código de retorno 302 indica redirecionamento temporário).
+Falhas na solicitação:
+404: solicitação não encontrada.
+Exemplo: http http://www.gmail.com/login --print=Hh
+Falhas no servidor:
+Classe 500.
