@@ -1,0 +1,7 @@
+Parte 2:
+
+Uso do HTTPie para fazer solicitações e receber respostas do protocolo HTTP.
+Exemplos de comandos HTTPie:
+GET: http --print=H www.wikipedia.org
+PUT: http PUT httpbin.org/put X-API-Token:123 name=wesley --print=H
+GET com verbosidade: http https://www.wikipedia.org/ -v
