@@ -1,0 +1,15 @@
+Parte 1:
+
+Códigos de status HTTP:
+200 a 299: redirecionamento para outra página.
+400 a 499: falhas do cliente.
+500 a 599: falhas no servidor.
+Headers comuns:
+Content-Encoding: arquivo enviado ao cliente para ser usado ou codificado.
+Content-Type: tipo de arquivo, por exemplo, HTML.
+HTTP é um protocolo stateless, o que significa que não há relação entre solicitações sucessivas na mesma conexão. No entanto, mecanismos como cookies permitem a criação de sessões para compartilhar o mesmo estado.
+HTTPS é um protocolo seguro que protege a confidencialidade entre cliente e servidor.
+TLS substituiu o SSL e não é mais usado.
+O DNS é responsável por fazer a localização do endereço IP mapeando o domínio usando o DNS.
+O cliente (navegador) envia uma solicitação HTTP para o servidor (onde o site está hospedado), identificando a URL.
+O servidor retorna a resposta correspondente.
