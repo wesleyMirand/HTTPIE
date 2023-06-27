@@ -1,0 +1,19 @@
+Parte 4: Idempotência
+
+A idempotência é um conceito matemático que se relaciona com a multiplicação, onde o resultado é sempre o mesmo quando multiplicamos um número por 1 ou 0. No contexto da multiplicação, os números 1 e 0 são considerados idempotentes, pois o resultado é sempre igual.
+
+Como isso se relaciona com o HTTP? O protocolo HTTP é baseado em métodos/verbos que indicam a ação a ser executada em um recurso. Existem dois tipos de métodos:
+
+Métodos seguros: São métodos que não alteram o estado do servidor, apenas executam operações de leitura. Exemplos desses métodos são GET, HEAD e OPTIONS. Ao executar esses métodos, obtemos sempre o mesmo resultado, pois eles realizam apenas operações de leitura.
+
+Métodos não seguros: São métodos que alteram o estado do servidor, realizando inclusões, exclusões e atualizações. Exemplos desses métodos são POST, PUT, DELETE e PATCH. Ao executar esses métodos, o resultado pode variar, pois eles realizam operações que modificam o estado do servidor.
+
+Exemplos de métodos HTTP e idempotência:
+
+GET: Se fizermos a requisição GET para a mesma URL várias vezes, o resultado será sempre o mesmo, pois o método GET é idempotente. Ele realiza apenas operações de leitura.
+
+DELETE: Se fizermos uma requisição DELETE para um recurso específico (por exemplo, DELETE /idX) e em seguida executarmos o mesmo método novamente, o resultado será diferente. Na primeira execução, o código de retorno será OK indicando que o recurso foi deletado. Na segunda execução, o código de retorno será 404 (not found) porque o recurso já foi excluído. O método DELETE não é seguro porque apaga algo do servidor, mas ainda assim é idempotente, pois sempre resulta no mesmo estado do servidor quando executado para o mesmo recurso.
+
+POST: O método POST, por sua vez, é não idempotente. Ele é usado para incluir um novo recurso no servidor (por exemplo, POST /add_row). Cada vez que executamos o POST, ele cria um novo recurso no servidor, resultando em solicitações diferentes e estados diferentes no servidor. Para tornar o POST idempotente, é necessário realizar verificações adicionais no código, como verificar se o recurso já existe antes de criar um novo. Isso requer uma lógica específica de programação.
+
+A idempotência no HTTP é importante para garantir a consistência e previsibilidade das operações realizadas em um servidor. Métodos idempotentes, como DELETE, PUT e GET, sempre produzem o mesmo resultado quando executados em sequência, enquanto métodos não idempotentes, como POST, podem resultar em diferentes estados do servidor a cada execução, exigindo tratamento adequado no código.
