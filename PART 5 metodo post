@@ -1,0 +1,20 @@
+
+O método POST é utilizado para criar recursos no servidor, enviando dados para a API. É necessário incluir os dados no corpo da requisição. O POST não é seguro e não é idempotente, o que significa que, se executado várias vezes, tentará criar várias vezes o mesmo recurso, como duas pessoas com dados iguais.
+
+No caso do GitHub, o método POST é usado para criar um novo repositório. Para fazer isso, você pode consultar a documentação da API e enviar a seguinte requisição:
+
+http POST https://api.github.com/user/repos
+
+Se você tentar fazer esse POST sem estar autenticado, receberá uma resposta de erro 401 (Não Autorizado). Portanto, é necessário autenticar-se corretamente, fornecendo seu nome de usuário e senha:
+
+http -a Wesley POST https://api.github.com/user/repos
+
+Se ocorrer um erro 400 (Requisição Inválida), pode ser devido a problemas de formatação no JSON enviado. Certifique-se de incluir o nome do repositório que deseja criar, informando o campo "name":
+
+http -a Wesley POST https://api.github.com/user/repos NAME='TESTE_HTTPie'
+
+Após o envio bem-sucedido, você receberá uma resposta com o código 201 (Criado), indicando que a solicitação foi atendida e o recurso está disponível no corpo da resposta. O código 201 é usado para persistir os dados no servidor antes de enviar a resposta. É importante observar que toda solicitação bem atendida retorna o código 201.
+
+Para enviar dados no corpo da mensagem usando o método POST, você pode utilizar o seguinte comando:
+
+http -a Wesley POST https://api.github.com/user/repos name='Teste_HTTPie' --print=HB
