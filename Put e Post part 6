@@ -1,0 +1,17 @@
+Para realizar uma solicitação de exclusão (DELETE) usando o protocolo HTTP, você pode usar o seguinte exemplo:
+
+http -a Wesley DELETE https://api.github.com/repos/WESLEY/Teste_HTTPie
+
+Essa solicitação irá deletar um recurso no GitHub. Quando a deleção é executada com sucesso, você pode receber uma resposta 200 ou 204. No entanto, se você tentar executar a deleção novamente, receberá uma resposta 404 indicando que o recurso não foi encontrado. Mesmo que você tente executar a deleção várias vezes, o resultado não mudará. O método DELETE é idempotente, ou seja, a resposta será a mesma independentemente do número de vezes que você o execute.
+
+Em relação ao método PUT, ele funciona de forma semelhante ao POST, mas com uma diferença importante. Enquanto o POST cria um novo recurso, o PUT substitui ou altera um recurso existente no banco de dados. Quando você envia uma solicitação PUT, especifica o recurso que deseja alterar, e os dados fornecidos substituem completamente os dados existentes desse recurso. O POST não é idempotente, o que significa que cada solicitação cria um novo recurso, enquanto o PUT é idempotente.
+
+Aqui está um exemplo de solicitação PUT para modificar um recurso de postagem:
+
+http PUT https://jsonplaceholder.typicode.com/posts/1 title='foo' body='TESTE DO HTTPie' userId=1 -v
+
+Nesse exemplo, a solicitação PUT está alterando o recurso de postagem especificamente para o post com o ID 1. Os dados fornecidos ao lado são os novos valores que serão alterados. A opção -v é usada para exibir informações detalhadas sobre a solicitação, incluindo cabeçalhos, corpo e a resposta do servidor. Se a alteração for bem-sucedida, você receberá uma resposta 200 indicando que a alteração foi feita com sucesso e os novos dados serão exibidos.
+
+Por fim, vale ressaltar que o método PUT é idempotente, o que significa que, independentemente de quantas vezes você envie a mesma solicitação PUT, o resultado será sempre o mesmo. Já o método POST não é idempotente, ou seja, cada solicitação POST cria um novo recurso.
+
+
