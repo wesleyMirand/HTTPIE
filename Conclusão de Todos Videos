@@ -1,0 +1,130 @@
+VIDEO1: 
+Códigos de status HTTP:
+
+200 a 299: Redirecionamento para outra página.
+400 a 499: Falhas do cliente.
+500 a 599: Falhas no servidor.
+Headers comuns:
+
+Content-Encoding: Indica como o arquivo enviado ao cliente deve ser usado ou codificado.
+Content-Type: Define o tipo de arquivo, como HTML, JSON, etc.
+Além disso, existem alguns conceitos importantes sobre o HTTP:
+
+O HTTP é um protocolo stateless, o que significa que não há relação direta entre solicitações sucessivas na mesma conexão. No entanto, mecanismos como cookies podem ser utilizados para criar sessões e compartilhar informações entre solicitações.
+O HTTPS é um protocolo seguro que protege a confidencialidade dos dados transmitidos entre o cliente e o servidor por meio de criptografia. Ele utiliza certificados digitais para autenticar o servidor e garantir a integridade dos dados.
+O SSL (Secure Sockets Layer) foi substituído pelo TLS (Transport Layer Security), que é o protocolo de segurança utilizado atualmente.
+O DNS (Domain Name System) é responsável por fazer a tradução de um nome de domínio para um endereço IP, permitindo que o cliente localize o servidor correto para uma determinada URL.
+O cliente, geralmente um navegador, envia uma solicitação HTTP para o servidor onde o site está hospedado, especificando a URL desejada.
+O servidor processa a solicitação e retorna uma resposta correspondente, que pode incluir o código de status, os headers e o corpo da resposta.
+Essas são algumas das informações fundamentais sobre o HTTP que você pode abordar no seu vídeo. Fique à vontade para adicionar mais detalhes e exemplos específicos, caso julgue necessário.                        
+
+VIDEO2: 
+
+Nesta parte, vamos explorar o uso do HTTPie para fazer solicitações e receber respostas do protocolo HTTP. Aqui estão alguns exemplos de comandos do HTTPie que você pode abordar no seu vídeo:
+
+GET: http --print=H www.wikipedia.org
+
+Nesse exemplo, usamos o comando GET para fazer uma solicitação GET para o site da Wikipedia. O parâmetro --print=H é usado para exibir os headers da resposta.
+
+PUT: http PUT httpbin.org/put X-API-Token:123 name=wesley --print=H
+
+Com o comando PUT, podemos enviar uma solicitação PUT para o servidor em httpbin.org. Aqui, enviamos o header X-API-Token com o valor 123 e o parâmetro name com o valor "wesley".
+
+GET com verbosidade: http https://www.wikipedia.org/ -v
+
+Esse comando GET é executado com a opção -v, que habilita o modo verboso e exibe informações detalhadas da solicitação e da resposta. É útil para depuração e entendimento mais profundo do processo de comunicação HTTP.
+
+VIDEO3:
+
+Nesta parte, vamos nos aprofundar nas solicitações e respostas do método GET, examinar códigos de retorno comuns e abordar o cabeçalho da requisição com o método PUT e o parâmetro --print=HB do HTTPie. Vamos também discutir as classes de redirecionamento (3xx), os códigos de status mais comuns e as falhas tanto na solicitação (4xx) quanto no servidor (5xx).
+
+Requisições e respostas do método GET:
+Explique como o método GET é utilizado para solicitar recursos de um servidor e como as respostas são retornadas. Discuta a estrutura da solicitação GET, incluindo a URL e os possíveis parâmetros, e mostre como o servidor retorna a resposta com os headers e o corpo da resposta.
+
+Examinar códigos de retorno comuns do GET:
+Destaque alguns códigos de retorno comuns que podem ser encontrados em respostas GET, como:
+
+200: Indica que a solicitação foi bem-sucedida.
+404: Indica que o recurso solicitado não foi encontrado.
+500: Indica uma falha no servidor.
+Cabeçalho da requisição com PUT e parâmetro --print=HB:
+Aborde como é possível enviar cabeçalhos na requisição PUT e como o parâmetro --print=HB do HTTPie pode ser utilizado para exibir tanto os headers da requisição quanto os da resposta. Mostre um exemplo de solicitação PUT com headers personalizados e explique sua finalidade.
+
+Classes de redirecionamento (3xx):
+Explique a classe de redirecionamento (3xx) e discuta alguns códigos de retorno comuns nessa classe. Por exemplo:
+
+301: Indica um redirecionamento permanente, onde o desenvolvedor deve solicitar o local para onde o redirecionamento deve ser encaminhado.
+302: Indica um redirecionamento temporário.
+Falhas na solicitação:
+Discuta o código de retorno 404, que indica que a solicitação não foi encontrada. Mostre um exemplo de solicitação GET para uma URL inexistente e explique a resposta retornada pelo servidor.
+
+Falhas no servidor:
+Aborde a classe de falhas no servidor (5xx) e mencione que esses códigos indicam problemas internos no servidor que impedem o processamento da solicitação. Por exemplo, um código 500 indica uma falha genérica do servidor.
+
+VIDEO4:
+Idempotência
+
+Na matemática, o conceito de idempotência está relacionado à multiplicação, em que o resultado não muda quando multiplicamos um número por 1 ou 0. No contexto do HTTP, a idempotência se refere à propriedade de certos métodos que, quando executados repetidamente, produzem o mesmo resultado. Vamos explorar a idempotência no contexto do HTTP e como ela se aplica a diferentes métodos.
+
+Existem dois tipos principais de métodos no HTTP: seguros e não seguros.
+
+Métodos seguros: GET, HEAD e OPTIONS são considerados métodos seguros, pois não alteram o estado do servidor. Esses métodos realizam apenas operações de leitura e não têm efeito colateral. A execução repetida desses métodos resulta no mesmo resultado, tornando-os idempotentes. Por exemplo, ao fazer várias solicitações GET para a mesma URL, o resultado será sempre o mesmo, obtendo informações do servidor.
+
+Métodos não seguros: POST, PUT, DELETE e PATCH são métodos não seguros, pois podem alterar o estado do servidor. A execução repetida desses métodos pode levar a resultados diferentes.
+
+DELETE: Embora o método DELETE seja usado para excluir um recurso, ele é considerado idempotente. Se você fizer uma solicitação DELETE para um recurso específico, como DELETE /recursoX, a primeira execução resultará em uma resposta de sucesso indicando que o recurso foi excluído. No entanto, se você executar a mesma solicitação DELETE novamente, receberá uma resposta 404 (não encontrado), pois o recurso já foi excluído. Embora o resultado seja diferente em cada execução subsequente, o efeito geral no servidor é o mesmo: o recurso não existe mais.
+
+POST: O método POST é não idempotente, pois cada execução cria um novo recurso no servidor. Por exemplo, ao fazer várias solicitações POST para adicionar uma nova linha a uma tabela, cada solicitação resultará em uma nova linha sendo adicionada. A execução repetida do POST não produzirá o mesmo resultado, pois cada execução cria um recurso novo e exclusivo no servidor.
+
+É importante notar que, embora alguns métodos sejam considerados idempotentes, isso não significa que eles não possam ter efeitos colaterais, como enviar notificações por e-mail, gerar registros de auditoria, entre outros. A idempotência está relacionada ao estado do servidor e ao resultado da execução do método em si.
+
+Entender a idempotência dos métodos HTTP é fundamental para projetar e implementar APIs e serviços web consistentes e previsíveis. Os desenvolvedores devem considerar cuidadosamente a natureza de cada método e garantir que a lógica do aplicativo seja adequada para lidar com os efeitos colaterais potenciais de cada método não idempotente, como o POST.
+
+VIDEO5:
+ Utilizando o Método POST para Criar Recursos
+
+Introdução: Nesta parte, vamos explorar o método POST e entender como ele é usado para criar recursos no servidor, enviando dados para a API. Vamos focar no exemplo do GitHub, onde o método POST é utilizado para criar um novo repositório.
+
+O Método POST:
+O método POST é um dos principais métodos HTTP e é utilizado para enviar dados para o servidor, com o objetivo de criar um novo recurso.
+Ao contrário dos métodos seguros, como GET, POST não é seguro, pois modifica o estado do servidor.
+O método POST não é idempotente, o que significa que cada vez que ele é executado, será feita uma nova criação do recurso correspondente.
+Exemplo com o GitHub:
+No GitHub, o método POST é utilizado para criar um novo repositório.
+Antes de fazer a requisição POST, é necessário autenticar-se corretamente, fornecendo as credenciais de usuário (nome de usuário e senha).
+A requisição POST para criar um repositório pode ser feita para o endpoint https://api.github.com/user/repos.
+Exemplo de Comando HTTPie para Criar um Repositório no GitHub:
+
+http -a Wesley POST https://api.github.com/user/repos name='Teste_HTTPie' --print=HB
+
+Lidando com Possíveis Erros:
+É importante mencionar que, se você tentar fazer uma requisição POST sem estar autenticado corretamente, receberá uma resposta de erro 401 (Não Autorizado).
+Além disso, se houver algum problema de formatação nos dados enviados no corpo da requisição, você pode receber um erro 400 (Requisição Inválida).
+Verifique se você incluiu corretamente o nome do repositório que deseja criar, fornecendo o campo "name".
+Resposta da Requisição POST:
+Após o envio bem-sucedido da requisição POST, você receberá uma resposta com o código 201 (Criado), indicando que a solicitação foi atendida com sucesso.
+No corpo da resposta, você encontrará o recurso criado, no caso do GitHub, o novo repositório.
+É importante observar que a resposta com o código 201 é usado para persistir os dados no servidor antes de enviar a resposta.
+Conclusão:
+O método POST é fundamental para criar recursos no servidor por meio de uma API. No exemplo do GitHub, o POST é utilizado para criar novos repositórios. É necessário autenticar-se corretamente e fornecer os dados corretos no corpo da requisição. Lembre-se de que o POST não é seguro e não é idempotente, ou seja, cada execução resultará em uma nova criação do recurso. Certifique-se de lidar corretamente com erros e utilizar os códigos de status para entender o resultado da requisição.
+
+VIDEO6:
+Exemplos de DELETE e PUT no Protocolo HTTP
+
+Introdução: Nesta última parte do nosso resumo, vamos abordar os exemplos práticos de uso dos métodos DELETE e PUT no protocolo HTTP. Veremos como realizar uma solicitação de exclusão (DELETE) e como usar o método PUT para substituir ou alterar um recurso existente.
+
+Exemplo de DELETE:
+Para realizar uma solicitação DELETE, podemos usar o seguinte exemplo:
+
+http -a Wesley DELETE https://api.github.com/repos/WESLEY/Teste_HTTPie
+
+Nesse exemplo, estamos realizando uma solicitação DELETE para o GitHub, com o objetivo de deletar um recurso específico. Quando a deleção é executada com sucesso, você pode receber uma resposta 200 ou 204. No entanto, se você tentar executar a deleção novamente, receberá uma resposta 404 indicando que o recurso não foi encontrado. Mesmo que você tente executar a deleção várias vezes, o resultado não mudará. O método DELETE é idempotente, ou seja, a resposta será a mesma independentemente do número de vezes que você o execute.
+
+Exemplo de PUT:
+O método PUT é usado para substituir ou alterar um recurso existente no servidor. Podemos usar o seguinte exemplo para modificar um recurso de postagem:
+http PUT https://jsonplaceholder.typicode.com/posts/1 title='foo' body='TESTE DO HTTPie' userId=1 -v
+
+Nesse exemplo, a solicitação PUT está alterando o recurso de postagem especificamente para o post com o ID 1. Os dados fornecidos ao lado, como o título ('foo'), o corpo ('TESTE DO HTTPie') e o ID do usuário (userId=1), substituirão completamente os dados existentes desse recurso. A opção -v é usada para exibir informações detalhadas sobre a solicitação, incluindo cabeçalhos, corpo e a resposta do servidor. Se a alteração for bem-sucedida, você receberá uma resposta 200 indicando que a alteração foi feita com sucesso, e os novos dados serão exibidos.
+
+Conclusão:
+O método DELETE é usado para excluir um recurso específico, e o método PUT é usado para substituir ou alterar um recurso existente. O DELETE é idempotente, garantindo que a resposta seja a mesma independentemente do número de vezes que você o execute. Por outro lado, o PUT é usado para modificar recursos e é idempotente, permitindo que a mesma solicitação produza o mesmo resultado em todas as execuções. Esses exemplos demonstram a funcionalidade e a importância desses métodos no protocolo HTTP.
