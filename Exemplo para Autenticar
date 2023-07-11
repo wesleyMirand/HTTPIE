@@ -1,0 +1,4 @@
+Oi gente, depois de autenticar e ter chave token de voces para usar a API do github, vocês vão copiar ela e cola bem aqui:
+C:\Users\wesley>http -a "BEM AQUI":x-oauth-basic POST https://api.github.com/user/repos name='TESTE_HTTP'
+exemplo:
+C:\Users\wesley>http -a kajklkfnlfsfanfansffansanfaslk:x-oauth-basic POST https://api.github.com/user/repos name='TESTE_HTTP'
