@@ -1,4 +1,17 @@
-Oi gente, depois de autenticar e ter chave token de voces para usar a API do github, vocês vão copiar ela e cola bem aqui:
-C:\Users\wesley>http -a "BEM AQUI":x-oauth-basic POST https://api.github.com/user/repos name='TESTE_HTTP'
-exemplo:
-C:\Users\wesley>http -a kajklkfnlfsfanfansffansanfaslk:x-oauth-basic POST https://api.github.com/user/repos name='TESTE_HTTP'
+Para autenticar é esse comando : 
+http -a RonaldinhoGaucho:asmksmlçklansflnslnsfnsfsfnasal GET https://api.github.com/user
+ o RonaldinhoGauco é seu nome de no GitHub e o asmksmlçkaskaskas é o link da sua chave token
+
+Depois de autenticar e ter chave token de voces para usar a API do github, vocês vão copiar ela e cola bem aqui:
+
+http -a RonaldinhoGaucho:x-oauth-basic POST https://api.github.com/user/repos name='TESTE_HTTP'
+
+e agora vamos deletar: 
+http -a RonaldinhoGaucho DELETE https://api.github.com/repos/RonaldinhoGaucho/TESTE_HTTP
+
+
+http -a wesleyMirand DELETE https://api.github.com/repos/wesleyMirand/TESTE_HTTP
+http -a wesleyMirand DELETE https://api.github.com/repos/wesleyMirand/TESTE_HTTP
+http DELETE https://api.github.com/repos/wesleyMirand/TESTEHTTP --auth wesleyMirand:samaskasmksmmasfsa
+
+http PUT https://api.github.com/repos/wesleyMirand/Testht --auth wesleyMirand:msnnmsnnsnsmsnansmsm --json name="TesteHTTP" description="teste do video"
